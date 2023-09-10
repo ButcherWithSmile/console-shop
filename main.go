@@ -35,10 +35,23 @@ func postConsoles(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newCosole)
 }
 
+func getConsoleByID(c *gin.Context) {
+	id := c.Param("id")
+
+	for _, v := range consoles {
+		if v.ID == id {
+			c.IndentedJSON(http.StatusOK, v)
+			return
+		}
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message" : "console not found"})
+}
+
 func main() {
 	router := gin.Default()
 	router.GET("/consoles", getConsoles)
+	router.GET("/consoles/:id", getConsoleByID)
 	router.POST("/consoles", postConsoles)
 
-	router.Run("localhost:8080")
+	router.Run("localhost:8880")
 }

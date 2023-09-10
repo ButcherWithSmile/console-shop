@@ -1,0 +1,1 @@
+This is a small practice project to develop a RESTful API using the Go programming language and the Gin framework. In this project, you can view the list of available consoles in this shop, add a new item to the existing list, or access a specific console by its ID.
